@@ -21,7 +21,25 @@ public class EmaillistServlet extends HttpServlet {
 
 		// action 찾기
 		String action = request.getParameter("a");
-		if("list".equals(action)) {
+		
+		if("form".equals(action)) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
+			rd.forward(request, response);
+		} else if("add".equals(action)){
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String email = request.getParameter("email");
+			
+			EmaillistVo vo = new EmaillistVo();
+			vo.setFirstName(firstName);
+			vo.setLastName(lastName);
+			vo.setEmail(email);
+			
+			new EmaillistDao().insert(vo);
+
+			response.sendRedirect("/emaillist02/el");
+			
+		} else {
 			EmaillistDao dao = new EmaillistDao();
 			List<EmaillistVo> list = dao.findAll();	
 			

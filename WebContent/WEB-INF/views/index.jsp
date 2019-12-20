@@ -1,7 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="com.bigdata2019.emaillist.vo.EmaillistVo"%>
-<%@page import="com.bigdata2019.emaillist.dao.EmaillistDao"%>
 <%
 	List<EmaillistVo> list = (List<EmaillistVo>)request.getAttribute("list");
 %>
@@ -38,7 +37,7 @@
 	
 	
 	<p>
-		<a href="/emaillist01/form.jsp">추가메일 등록</a>
+		<a href="/emaillist02/el?a=form">추가메일 등록</a>
 	</p>
 	<br>
 </body>
